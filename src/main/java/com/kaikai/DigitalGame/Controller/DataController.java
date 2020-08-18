@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikai.DigitalGame.Utils.Message;
 import com.kaikai.DigitalGame.bean.LotteryBean;
+import com.kaikai.DigitalGame.mytest.GithubRepoPageProcessor;
 import com.kaikai.DigitalGame.services.DataService;
+
+import us.codecraft.webmagic.Spider;
 
 /** 
 * @author 作者 kaikai: 
@@ -24,5 +27,10 @@ public class DataController {
 	public Message<LotteryBean> getData() {
 		Message<LotteryBean> data = dataservice.getData();
 		return data;
+	}
+	@GetMapping("/getT")
+	public String getT() {
+		//Spider.create(new GithubRepoPageProcessor()).addUrl("https://github.com/code4craft").thread(5).run();
+		return "Tdate";
 	}
 }
