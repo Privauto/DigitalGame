@@ -8,9 +8,8 @@ import com.kaikai.DigitalGame.bean.LotteryBean;
 /**
  * @author 作者 kaikai:
  * @version 创建时间：2020年7月5日 下午4:49:56
- * @Description 类说明
+ * @Description 类说明 生成双色球
  */
-@Configuration
 public class DigitalData {
 	//迭代使用的资源
 	private ArrayList<Integer> redball=new ArrayList<Integer>();

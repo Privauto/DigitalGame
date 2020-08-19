@@ -20,7 +20,7 @@ public class GithubRepoPageProcessor implements PageProcessor {
     public void process(Page page) {
         // 部分二：定义如何抽取页面信息，并保存下来
         page.putField("author", page.getUrl().regex("https://github\\.com/(\\w+)/.*").toString());
-        page.putField("name", page.getHtml().xpath("//h1[@class='entry-title public']/strong/a/text()").toString());
+        page.putField("name", page.getHtml().xpath("//h1[@class='entry-title public']/strong/a/text()").toString()); 
         if (page.getResultItems().get("name") == null) {
             //skip this page
             page.setSkip(true);
@@ -42,7 +42,7 @@ public class GithubRepoPageProcessor implements PageProcessor {
                 //从"https://github.com/code4craft"开始抓
                 .addUrl("https://github.com/code4craft")
                 //开启5个线程抓取
-                .thread(5)
+                .thread(1)
                 //启动爬虫
                 .run();
     }

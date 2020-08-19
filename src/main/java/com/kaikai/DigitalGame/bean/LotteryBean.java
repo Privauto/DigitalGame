@@ -29,9 +29,8 @@ public class LotteryBean {
 	}
 	public LotteryBean(ArrayList<Integer> redBall, Integer blueBall) {
 		super();
-		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(int i= 0;i<6;i++) {
-			list.add(1);
+			redBall.add(1);
 		}
 		blueBall=16;
 		this.redBall = redBall;

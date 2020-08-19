@@ -1,5 +1,6 @@
 package com.kaikai.DigitalGame.services.serImp;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +19,10 @@ import com.kaikai.DigitalGame.services.DataService;
 */
 @Service
 public class DataServiceImp implements DataService {
-
-	@Autowired
-	private DigitalData digitaldata;
-	
 	@Override
 	public Message<LotteryBean> getData() {
-		
-		LotteryBean data = digitaldata.getDigitalData();
-		System.out.println(data);
+		LotteryBean data=new LotteryBean(new ArrayList<>(), new Integer(1));
 		Message<LotteryBean> message = new Message<>(StatusCodeUtil.SUCCESS_CODE, "成功", data,new Date().getTime());	
 		return message;
-	}
-	
+	}	
 }
