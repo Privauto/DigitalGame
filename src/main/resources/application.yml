@@ -1,0 +1,9 @@
+spring:
+    profiles:
+        active: dev
+logging:
+    level:
+        root: info
+        com.kaikai: info
+    file:
+        name: log/dg.log

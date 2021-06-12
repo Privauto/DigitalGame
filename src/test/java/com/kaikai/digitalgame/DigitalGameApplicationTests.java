@@ -1,4 +1,4 @@
-package com.kaikai.DigitalGame;
+package com.kaikai.digitalgame;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
