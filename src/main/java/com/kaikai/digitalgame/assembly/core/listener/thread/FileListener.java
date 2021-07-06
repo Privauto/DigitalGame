@@ -1,4 +1,4 @@
-package com.kaikai.digitalgame.core.listener.thread;
+package com.kaikai.digitalgame.assembly.core.listener.thread;
 
 import java.io.IOException;
 import java.nio.file.WatchEvent;

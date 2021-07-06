@@ -1,6 +1,6 @@
-package com.kaikai.digitalgame.core.listener;
+package com.kaikai.digitalgame.assembly.core.listener;
 
-import com.kaikai.digitalgame.core.listener.thread.FileListener;
+import com.kaikai.digitalgame.assembly.core.listener.thread.FileListener;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.concurrent.ExecutorService;
@@ -17,7 +17,7 @@ public class Listener {
     private String rootPath;
 
     /**
-     * Listener构造器:初始化监听器并启动监听线程
+     * Listener构造器:初始化监听器并启动监听器线程
      * @param rootPath
      */
     private Listener(String rootPath) {

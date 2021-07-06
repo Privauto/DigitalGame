@@ -1,4 +1,4 @@
-package com.kaikai.digitalgame.web.Controller;
+package com.kaikai.digitalgame.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
