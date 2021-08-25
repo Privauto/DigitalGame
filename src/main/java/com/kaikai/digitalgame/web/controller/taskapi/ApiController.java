@@ -2,9 +2,10 @@ package com.kaikai.digitalgame.web.controller.taskapi;
 
 import com.kaikai.digitalgame.assembly.download.DownloadUtils;
 import net.lingala.zip4j.exception.ZipException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -19,14 +20,17 @@ import java.util.concurrent.ExecutionException;
 @RequestMapping("taskapi")
 public class ApiController {
 
+    int cunt=0;
+
     @RequestMapping("{taskid}/result")
     @CrossOrigin
     @ResponseBody
     public String testapi(@PathVariable("taskid") String id){
-         String key = null;
+        Logger logger = LoggerFactory.getLogger(ApiController.class);
+        String key = null;
         if("ideakey".equalsIgnoreCase(id)){
             String fileName = "temp.zip";
-            String srcUrl = "http://idea.medeming.com/a/jihuoma1.zip";
+            String srcUrl = "https://idea.medeming.com/a/jihuoma1.zip";
             String s;
             Map<String, String> zip = null;
             try {
@@ -41,10 +45,15 @@ public class ApiController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if(zip.containsKey("2018.2之后的版本用这个.txt")){
-                key = zip.get("2018.2之后的版本用这个.txt");
+            for(Map.Entry<String,String> entry:zip.entrySet()){
+                String str = entry.getKey();
+                String[] strings = str.split("2");
+                if(strings.length==3){
+                    key=entry.getValue();
+                }
             }
         }
+        logger.info("0.0.3版本下该接口被调用了"+ ++cunt +"次");
         return key;
     }
 }

@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class DownloadUtils {
     /**
-     * 使用HttpClient下载远程文件
+     * 使用HttpClient下载远程服务器中的文件
      * @param fileName 存至本地的文件名
      * @param srcUrl 需要下载的文件的url
      * @return 已下载文件的路径
@@ -74,6 +74,9 @@ public class DownloadUtils {
         ZipFile zFile = new ZipFile(file);
         // 设置字符集
         zFile.setFileNameCharset("GBK");
+        if (!zFile.isValidZipFile()) {
+            throw new ZipException("压缩文件不合法,可能被损坏.");
+        }
         // 获取ZIP中所有文件的FileHeader,以便后面对zip中文件进行遍历
         List<FileHeader> list = zFile.getFileHeaders();
         for (FileHeader fileHeader : list) {
