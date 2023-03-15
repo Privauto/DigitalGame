@@ -37,7 +37,7 @@ public class ApiController {
                 s=DownloadUtils.downloadFile(fileName, srcUrl);
                 zip = DownloadUtils.previewFile(new File(s), "zip");
             } catch (ZipException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage());
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -45,15 +45,19 @@ public class ApiController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for(Map.Entry<String,String> entry:zip.entrySet()){
-                String str = entry.getKey();
-                String[] strings = str.split("2");
-                if(strings.length==3){
-                    key=entry.getValue();
+            if(zip==null){
+                key="出了点问题,请再试一次";
+            }else{
+                for(Map.Entry<String,String> entry:zip.entrySet()){
+                    String str = entry.getKey();
+                    String[] strings = str.split("2");
+                    if(strings.length==3){
+                        key=entry.getValue();
+                    }
                 }
             }
         }
-        logger.info("0.0.3版本下该接口被调用了"+ ++cunt +"次");
+        logger.info("0.0.4版本下该接口被调用了"+ ++cunt +"次");
         return key;
     }
 }

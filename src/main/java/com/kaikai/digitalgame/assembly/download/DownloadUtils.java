@@ -75,6 +75,7 @@ public class DownloadUtils {
         // 设置字符集
         zFile.setFileNameCharset("GBK");
         if (!zFile.isValidZipFile()) {
+            file.delete();
             throw new ZipException("压缩文件不合法,可能被损坏.");
         }
         // 获取ZIP中所有文件的FileHeader,以便后面对zip中文件进行遍历
